@@ -1,0 +1,34 @@
+@import "../styles/utils/index";
+
+.content {
+  max-width: 550px;
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.title {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-rows: repeat(5, minmax(0, 60px));
+}
+
+.tile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  cursor: pointer;
+  @include text-title-md;
+
+  &.marked {
+    background-color: lightblue;
+  }
+}

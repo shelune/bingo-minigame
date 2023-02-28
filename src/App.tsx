@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import GameView from "./views/game/game";
+import { GameView } from "./views/game";
 import IntroView from "./views/intro/intro";
 
 function App() {
-  const [username, setUsername] = useState("");
-  const [showingGame, setShowingGame] = useState(false);
+  const [username, setUsername] = useState("Stranger");
+  const [showingGame, setShowingGame] = useState(true);
 
   return (
     <div className="App">
