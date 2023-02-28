@@ -2,7 +2,7 @@ import React from "react";
 import { screen, render } from "@testing-library/react";
 
 import { GameView } from "./game";
-import { mockBareBoard, mockWonBoardColumn } from "../../views/game/utils.mock";
+import { mockBareBoard } from "../../views/game/utils.mock";
 
 describe("Board", () => {
   it("should render", () => {

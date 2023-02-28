@@ -1,5 +1,5 @@
 import React from "react";
-import { screen, fireEvent, render } from "@testing-library/react";
+import { screen, render } from "@testing-library/react";
 
 import Profile, { PlayerData } from "./profile";
 
