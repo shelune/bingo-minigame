@@ -87,11 +87,15 @@ export const useData = (
   };
 
   const onMark = (tiles: Tile[], id: number) => {
+    if (picked.includes(id)) {
+      return;
+    }
     const newTiles = tiles.slice();
     const newTile = newTiles.find((tile) => tile.id === id);
     if (newTile) {
       newTiles[id].marked = true;
     }
+
     setPicked([...picked, id]);
     setTiles(newTiles);
     const hasRowWinner = checkRow(newTiles, id);

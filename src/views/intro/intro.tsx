@@ -14,8 +14,6 @@ export default function IntroView({
   setShowingGame,
   username,
 }: Props) {
-  const [error, setError] = useState("");
-
   return (
     <div className={css.content}>
       <div className={css.dialog}>
@@ -45,11 +43,6 @@ export default function IntroView({
               }}
             />
           </div>
-          {error && (
-            <div data-testid="login-error" className={css.formError}>
-              {error}
-            </div>
-          )}
           <div className={css.formFunctions}>
             <button
               type="submit"
