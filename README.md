@@ -1,5 +1,7 @@
 # A game of Bingo
 
+Also available online at https://bingo-minigame.onrender.com/
+
 ## How to run
 
 - Inside the main directory, run `npm i`.
