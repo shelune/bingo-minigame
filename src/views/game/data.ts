@@ -7,6 +7,7 @@ import {
   checkColumn,
   checkDiagonal,
   checkRow,
+  generateBoardTiles,
   getBoardNumbers,
   getNumberFromRange,
 } from "./utils";
@@ -18,18 +19,8 @@ export type WinCondition = "column" | "row" | "diagonal" | "";
 export const useData = (
   username: string
 ): Omit<ComponentProps<typeof GameView>, "username"> => {
-  const getNewBoard = () => {
-    const numbers = getBoardNumbers().flat();
-    const tiles: Tile[] = numbers.map((number, idx) => {
-      return {
-        id: idx,
-        value: number,
-        marked: false,
-      };
-    });
-    return tiles;
-  };
-  const [tiles, setTiles] = useState(getNewBoard());
+  const numbers = getBoardNumbers().flat();
+  const [tiles, setTiles] = useState(generateBoardTiles(numbers));
   const [winCondition, setWinCondition] = useState<WinCondition>("");
   const [picked, setPicked] = useState<number[]>([]);
   const [timeStart, setTimeStart] = useState<Date | null>(null);
@@ -74,7 +65,8 @@ export const useData = (
     }
 
     // Reset
-    const newBoard = getNewBoard();
+    const numbers = getBoardNumbers().flat();
+    const newBoard = generateBoardTiles(numbers);
     setTiles(newBoard);
     setWinCondition("");
     setPicked([]);

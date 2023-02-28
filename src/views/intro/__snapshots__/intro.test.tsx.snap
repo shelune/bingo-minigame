@@ -26,6 +26,7 @@ exports[`IntroView should render 1`] = `
           <input
             class="textInput isEditing"
             id="username"
+            maxlength="25"
             name="username"
             type="text"
             value="Stranger"
@@ -36,7 +37,6 @@ exports[`IntroView should render 1`] = `
         >
           <button
             class="button"
-            data-testid="login-submit"
             type="submit"
           >
             Enter

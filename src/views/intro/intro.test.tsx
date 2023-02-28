@@ -1,5 +1,5 @@
 import React from "react";
-import { screen, act, fireEvent, render } from "@testing-library/react";
+import { screen, fireEvent, render } from "@testing-library/react";
 
 import IntroView from "./intro";
 

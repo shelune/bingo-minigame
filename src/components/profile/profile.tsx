@@ -33,6 +33,7 @@ export default function Profile({
       className={classNames(css.content, {
         [css.isOpen]: isOpen,
       })}
+      data-testid="profile-drawer"
     >
       <div className={css.profileHeader}>
         <div role="button" onClick={setOpen} className={css.closeButton}>
@@ -52,8 +53,8 @@ export default function Profile({
               <div>
                 <span>Latest 5 games summary:</span>
                 <ul>
-                  {playerData.recentGames.map((game) => (
-                    <li>
+                  {playerData.recentGames.map((game, idx) => (
+                    <li key={idx + game.elapsedTime}>
                       Won by{" "}
                       <span className={css.hightlight}>
                         {game.winCondition}

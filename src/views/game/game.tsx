@@ -57,7 +57,7 @@ export function GameView({
       </div>
       <div className={css.gameView}>
         <Board tiles={tiles} onMark={onMark} />
-        <div className={css.announcement}>
+        <div className={css.announcement} data-testid="announcement">
           <div>Tiles picked: {pickedValue.join(", ")}</div>
           {!!winCondition ? (
             <div className={css.victory}>

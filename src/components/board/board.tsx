@@ -35,6 +35,7 @@ export default function Board({ tiles, onMark }: Props) {
                 onMark(tiles, tile.id);
               }}
               key={tile.id}
+              data-testid="tile"
             >
               {idx === 12 ? "Free" : tile.value}
             </div>

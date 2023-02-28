@@ -12,7 +12,7 @@ export function getNumberFromRange(range: number, excluding: number[]): number {
     : number;
 }
 
-function transpose(matrix: number[][]) {
+export function transpose(matrix: number[][]) {
   return matrix[0].map((_, colIdx) =>
     matrix.map((_, rowIdx) => matrix[rowIdx][colIdx])
   );
@@ -26,6 +26,17 @@ export function getBoardNumbers() {
   // transpose so the bingo card follows column not row
   const transposed = transpose(numbers);
   return transposed;
+}
+
+export function generateBoardTiles(numbers: number[]) {
+  const tiles: Tile[] = numbers.map((number, idx) => {
+    return {
+      id: idx,
+      value: number,
+      marked: false,
+    };
+  });
+  return tiles;
 }
 
 export function checkRow(board: Tile[], idxOnBoard: number) {
