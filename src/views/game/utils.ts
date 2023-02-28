@@ -44,7 +44,6 @@ export function checkColumn(board: Tile[], idxOnBoard: number) {
   const columnIdx = idxOnBoard % 5;
   const markedCount = [0, 1, 2, 3, 4].reduce((accu, curr) => {
     const boardIdx = curr * 5 + columnIdx;
-    console.log(board[boardIdx]);
     if (board[boardIdx].marked) {
       return accu + 1;
     }

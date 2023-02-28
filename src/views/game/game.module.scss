@@ -1,11 +1,29 @@
 @import "../../styles/utils/index";
 
-.interactions {
+.header {
+  @include text-title-md;
+}
+
+.gameView {
   max-width: 550px;
-  margin: 24px auto;
-  display: flex;
-  gap: 8px;
   justify-content: center;
+  margin: 24px auto;
+}
+
+.announcement {
+  margin-top: 32px;
+  text-align: center;
+}
+
+.victory {
+  color: $orange;
+}
+
+.interactions {
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
 }
 
 .button {

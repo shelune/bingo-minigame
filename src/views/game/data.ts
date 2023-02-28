@@ -1,4 +1,6 @@
-import { ComponentProps, useState } from "react";
+import { ComponentProps, useEffect, useState } from "react";
+import differenceInSeconds from "date-fns/differenceInSeconds";
+
 import { Tile } from "../../components/board";
 import { GameView } from "./game";
 import {
@@ -27,14 +29,18 @@ export const useData = (): Omit<
     return tiles;
   };
   const [tiles, setTiles] = useState(getNewBoard());
-  const [won, setWon] = useState<WinCondition>("");
+  const [winCondition, setWinCondition] = useState<WinCondition>("");
   const [picked, setPicked] = useState<number[]>([]);
+  const [timeStart, setTimeStart] = useState<Date | null>(null);
+  const [elapsedTime, setElapsedTime] = useState("");
 
   const onReset = () => {
     const newBoard = getNewBoard();
     setTiles(newBoard);
-    setWon("");
+    setWinCondition("");
     setPicked([]);
+    setTimeStart(null);
+    setElapsedTime("");
   };
 
   const onAdvanceTurn = () => {
@@ -49,26 +55,43 @@ export const useData = (): Omit<
     if (newTile) {
       newTiles[id].marked = true;
     }
+    setPicked([...picked, id]);
     setTiles(newTiles);
     const hasRowWinner = checkRow(newTiles, id);
     const hasColumnWinner = checkColumn(newTiles, id);
     const hasDiagonalWinner = checkDiagonal(newTiles);
     if (hasRowWinner) {
-      setWon("row");
+      setWinCondition("row");
     }
     if (hasColumnWinner) {
-      setWon("column");
+      setWinCondition("column");
     }
     if (hasDiagonalWinner) {
-      setWon("diagonal");
+      setWinCondition("diagonal");
     }
   };
+
+  useEffect(() => {
+    if (timeStart === null && picked.length !== 0) {
+      setTimeStart(new Date());
+    }
+  }, [picked, timeStart]);
+
+  useEffect(() => {
+    if (!!winCondition && timeStart) {
+      const elapsed = differenceInSeconds(new Date(), timeStart);
+      setElapsedTime(`${elapsed} seconds`);
+    }
+  }, [timeStart, winCondition]);
 
   return {
     tiles,
     onMark,
-    won,
+    winCondition,
     onAdvanceTurn,
     onReset,
+    picked,
+    elapsedTime,
+    timeStart,
   };
 };
