@@ -41,15 +41,11 @@ export default function IntroView({
               onChange={(e) => {
                 setUsername(e.target.value);
               }}
+              maxLength={25}
             />
           </div>
           <div className={css.formFunctions}>
-            <button
-              type="submit"
-              className={css.button}
-              data-testid="login-submit"
-              disabled={!username}
-            >
+            <button type="submit" className={css.button} disabled={!username}>
               Enter
             </button>
           </div>

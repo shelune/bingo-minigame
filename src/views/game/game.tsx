@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import React, { useState } from "react";
 import Board, { Tile } from "../../components/board/board";
 import Profile, { PlayerData } from "../../components/profile/profile";
@@ -74,7 +75,11 @@ export function GameView({
           >
             Get Number
           </button>
-          <button type="button" className={css.button} onClick={onReset}>
+          <button
+            type="button"
+            className={classNames(css.button, css.ghostButton)}
+            onClick={onReset}
+          >
             Reset Board
           </button>
         </div>

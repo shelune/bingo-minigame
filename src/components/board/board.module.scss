@@ -39,7 +39,7 @@
   @include text-title-md;
 
   &.marked {
-    background-color: darken($orange, 10%);
+    background-color: $orange-dark;
     color: $white;
   }
 }

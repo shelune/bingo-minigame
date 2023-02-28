@@ -13,6 +13,7 @@
 
 .gameView {
   max-width: 650px;
+  padding: 0 32px;
   justify-content: center;
   margin: 24px auto;
 }
@@ -45,10 +46,26 @@
   height: 48px;
   line-height: 48px;
   min-width: 120px;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: $orange-dark;
+  }
 
   &:disabled {
     cursor: not-allowed;
     background-color: $gray;
+  }
+
+  &.ghostButton {
+    background-color: transparent;
+    color: $orange;
+    border: 1px solid $orange;
+
+    &:hover {
+      color: $orange-dark;
+      border: 1px solid $orange-dark;
+    }
   }
 }
 

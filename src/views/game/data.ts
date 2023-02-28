@@ -40,35 +40,37 @@ export const useData = (
   );
 
   const onReset = () => {
-    // Save to profile
-    if (!storedValue) {
-      setValue({
-        name: username,
-        gamesCount: 1,
-        totalTimeSpent: elapsedTime,
-        recentGames: [
-          {
-            winCondition,
-            turns: picked.length,
-            elapsedTime: elapsedTime,
-          },
-        ],
-      });
-    } else {
-      const { gamesCount, totalTimeSpent, recentGames } = storedValue;
-      setValue({
-        ...storedValue,
-        gamesCount: gamesCount + 1,
-        totalTimeSpent: totalTimeSpent + elapsedTime,
-        recentGames: [
-          ...recentGames,
-          {
-            winCondition,
-            turns: picked.length,
-            elapsedTime: elapsedTime,
-          },
-        ].slice(0, 5),
-      });
+    // Save to profile if win
+    if (winCondition) {
+      if (!storedValue) {
+        setValue({
+          name: username,
+          gamesCount: 1,
+          totalTimeSpent: elapsedTime,
+          recentGames: [
+            {
+              winCondition,
+              turns: picked.length,
+              elapsedTime: elapsedTime,
+            },
+          ],
+        });
+      } else {
+        const { gamesCount, totalTimeSpent, recentGames } = storedValue;
+        setValue({
+          ...storedValue,
+          gamesCount: gamesCount + 1,
+          totalTimeSpent: totalTimeSpent + elapsedTime,
+          recentGames: [
+            ...recentGames,
+            {
+              winCondition,
+              turns: picked.length,
+              elapsedTime: elapsedTime,
+            },
+          ].slice(0, 5),
+        });
+      }
     }
 
     // Reset
