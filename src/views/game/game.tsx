@@ -51,7 +51,7 @@ export function GameView({
             role="button"
             onClick={() => setProfileIsOpen(true)}
           >
-            {username}
+            Player: {username}
           </div>
         </div>
       </div>

@@ -43,6 +43,7 @@ exports[`Board should render 1`] = `
           class="profile"
           role="button"
         >
+          Player: 
           foobar
         </div>
       </div>
@@ -266,7 +267,7 @@ exports[`Board should render 1`] = `
 </div>
 `;
 
-exports[`Board should render announcement on a won board 1`] = `
+exports[`Board should render announcement on a won board & disable Get Number 1`] = `
 <div
   class="announcement"
   data-testid="announcement"

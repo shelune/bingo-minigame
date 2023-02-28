@@ -23,7 +23,7 @@ describe("Board", () => {
     expect(container).toMatchSnapshot();
   });
 
-  it("should render announcement on a won board", () => {
+  it("should render announcement on a won board & disable Get Number", () => {
     // not following actual data correctness
     // just want to test the announcement markup / visual
     render(
@@ -41,5 +41,6 @@ describe("Board", () => {
       />
     );
     expect(screen.getByTestId("announcement")).toMatchSnapshot();
+    expect(screen.getByText("Get Number")).toHaveAttribute("disabled");
   });
 });
