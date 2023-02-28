@@ -1,0 +1,63 @@
+@import "../../styles/utils/index";
+
+.content {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dialog {
+  min-height: 500px;
+  max-width: 550px;
+  margin: 0 auto;
+}
+
+.formControl {
+  width: 100%;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.label {
+  @include text-label;
+  font-weight: 600;
+  color: $black;
+  margin-bottom: 8px;
+  display: inline-block;
+}
+
+.textInput {
+  @include rounded-4;
+  @include text-body;
+  width: 100%;
+  max-width: 100%;
+  padding: 8px;
+  border: 1px solid $gray;
+
+  &:focus {
+    outline-color: $orange;
+  }
+}
+
+.formFunctions {
+  text-align: center;
+}
+
+.button {
+  @include text-body;
+  @include rounded-4;
+  cursor: pointer;
+  background-color: $orange;
+  color: $white;
+  outline: none;
+  border: none;
+  height: 48px;
+  line-height: 48px;
+  min-width: 120px;
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: $gray;
+  }
+}

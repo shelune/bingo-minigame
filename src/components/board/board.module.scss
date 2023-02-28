@@ -1,4 +1,4 @@
-@import "../styles/utils/index";
+@import "../../styles/utils/index";
 
 .content {
   max-width: 400px;
@@ -35,6 +35,7 @@
   cursor: pointer;
   background-color: $white;
   color: $black;
+  transition: background-color 0.2s ease, color 0.2s ease;
   @include text-title-md;
 
   &.marked {

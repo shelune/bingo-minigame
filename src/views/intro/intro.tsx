@@ -17,8 +17,9 @@ export default function IntroView({
   const [error, setError] = useState("");
 
   return (
-    <div className={css.gameView}>
+    <div className={css.content}>
       <div className={css.dialog}>
+        <h1>Let's play Bingo!</h1>
         <form
           className={css.form}
           onSubmit={(e) => {
@@ -28,16 +29,13 @@ export default function IntroView({
           }}
         >
           <div className={css.formControl}>
-            <label
-              htmlFor="username"
-              className={classNames(css.label, {
-                [css.isEditing]: !!username,
-              })}
-            >
-              Name
+            <label htmlFor="username" className={css.label}>
+              Player name
             </label>
             <input
-              className={css.textInput}
+              className={classNames(css.textInput, {
+                [css.isEditing]: !!username,
+              })}
               type="text"
               value={username}
               id="username"
@@ -55,8 +53,9 @@ export default function IntroView({
           <div className={css.formFunctions}>
             <button
               type="submit"
-              className={css.submitButton}
+              className={css.button}
               data-testid="login-submit"
+              disabled={!username}
             >
               Enter
             </button>

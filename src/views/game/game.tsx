@@ -1,5 +1,6 @@
-import React from "react";
-import Board, { Tile } from "../../components/board";
+import React, { useState } from "react";
+import Board, { Tile } from "../../components/board/board";
+import Profile, { PlayerData } from "../../components/profile/profile";
 import { WinCondition } from "./data";
 
 import css from "./game.module.scss";
@@ -12,35 +13,55 @@ type Props = {
   onReset: () => void;
   winCondition: WinCondition;
   picked: number[];
-  elapsedTime: string;
-  timeStart: Date | null;
+  elapsedTime: number;
+  profile: PlayerData | null;
+  onDeleteProfile: () => void;
 };
 
 export function GameView({
   username,
   tiles,
   onMark,
-  winCondition,
   onAdvanceTurn,
   onReset,
+  winCondition,
   picked,
   elapsedTime,
-  timeStart,
+  profile,
+  onDeleteProfile,
 }: Props) {
+  const [profileIsOpen, setProfileIsOpen] = useState(false);
   const pickedValue = picked.map((number) =>
     number === 12 ? "Free" : tiles[number].value
   );
   return (
     <div className={css.content}>
-      <div className={css.header}>Hello {username}</div>
+      <Profile
+        isOpen={profileIsOpen}
+        setOpen={() => setProfileIsOpen(false)}
+        playerData={profile}
+        deleteProfile={onDeleteProfile}
+      />
+      <div className={css.header}>
+        <div className={css.leftSide}>A game of Bingo</div>
+        <div className={css.rightSide}>
+          <div
+            className={css.profile}
+            role="button"
+            onClick={() => setProfileIsOpen(true)}
+          >
+            {username}
+          </div>
+        </div>
+      </div>
       <div className={css.gameView}>
         <Board tiles={tiles} onMark={onMark} />
         <div className={css.announcement}>
           <div>Tiles picked: {pickedValue.join(", ")}</div>
           {!!winCondition ? (
             <div className={css.victory}>
-              You won by matching {winCondition} after {picked.length} turns.
-              The game lasted for {elapsedTime}.
+              🎉 You won by matching {winCondition} after {picked.length} turns.
+              The game lasted for {elapsedTime} seconds 🎉
             </div>
           ) : null}
         </div>

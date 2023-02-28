@@ -7,7 +7,7 @@ type Props = {
 };
 
 export const GameView = ({ username }: Props) => {
-  const props = useData();
+  const props = useData(username);
   // eslint-disable-next-line react/jsx-props-no-spreading
   return <MainComponent username={username} {...props} />;
 };

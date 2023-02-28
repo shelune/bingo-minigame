@@ -1,4 +1,4 @@
-import { Tile } from "../../components/board";
+import { Tile } from "../../components/board/board";
 import shuffle from "lodash.shuffle";
 
 export function range(min: number, max: number) {

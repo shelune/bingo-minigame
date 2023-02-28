@@ -1,0 +1,73 @@
+@import "../../styles/utils/index";
+
+.content {
+  position: fixed;
+  right: 0;
+  top: 0;
+  transform: translateX(100%);
+  width: 340px;
+  height: 100vh;
+  display: flex;
+  flex-flow: column;
+  transition: transform 0.2s ease-in;
+  background-color: $white;
+  box-shadow: 0px 4px 8px -4px rgba(0, 0, 0, 0.04),
+    0px 24px 84px -16px rgba(0, 0, 0, 0.25);
+
+  &.isOpen {
+    transform: translateX(0);
+  }
+}
+
+.profileHeader {
+  @include text-title-md;
+  font-weight: 600;
+  background-color: $black;
+  color: $white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+}
+
+.closeButton {
+  @include text-label;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.profileBody {
+  padding: 0 24px;
+}
+
+.highlight {
+  color: $orange;
+}
+
+.profileFooter {
+  margin-top: auto;
+  padding: 24px;
+  text-align: right;
+}
+
+.button {
+  @include text-body;
+  @include rounded-4;
+  cursor: pointer;
+  background-color: $orange;
+  color: $white;
+  outline: none;
+  border: none;
+  height: 48px;
+  line-height: 48px;
+  min-width: 120px;
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: $gray;
+  }
+}
+
+.profileError {
+  padding: 24px;
+}
