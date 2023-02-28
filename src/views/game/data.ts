@@ -1,7 +1,13 @@
 import { ComponentProps, useState } from "react";
 import { Tile } from "../../components/board";
 import { GameView } from "./game";
-import { checkColumn, checkDiagonal, checkRow, getBoardNumbers } from "./utils";
+import {
+  checkColumn,
+  checkDiagonal,
+  checkRow,
+  getBoardNumbers,
+  getNumberFromRange,
+} from "./utils";
 
 export type WinCondition = "column" | "row" | "diagonal" | "";
 
@@ -9,16 +15,33 @@ export const useData = (): Omit<
   ComponentProps<typeof GameView>,
   "username"
 > => {
-  const numbers = getBoardNumbers().flat();
-  const initTiles: Tile[] = numbers.map((number, idx) => {
-    return {
-      id: idx,
-      value: number,
-      marked: false,
-    };
-  });
-  const [tiles, setTiles] = useState(initTiles);
+  const getNewBoard = () => {
+    const numbers = getBoardNumbers().flat();
+    const tiles: Tile[] = numbers.map((number, idx) => {
+      return {
+        id: idx,
+        value: number,
+        marked: false,
+      };
+    });
+    return tiles;
+  };
+  const [tiles, setTiles] = useState(getNewBoard());
   const [won, setWon] = useState<WinCondition>("");
+  const [picked, setPicked] = useState<number[]>([]);
+
+  const onReset = () => {
+    const newBoard = getNewBoard();
+    setTiles(newBoard);
+    setWon("");
+    setPicked([]);
+  };
+
+  const onAdvanceTurn = () => {
+    const newNumber = getNumberFromRange(tiles.length, picked);
+    setPicked([...picked, newNumber]);
+    onMark(tiles, newNumber);
+  };
 
   const onMark = (tiles: Tile[], id: number) => {
     const newTiles = tiles.slice();
@@ -45,5 +68,7 @@ export const useData = (): Omit<
     tiles,
     onMark,
     won,
+    onAdvanceTurn,
+    onReset,
   };
 };

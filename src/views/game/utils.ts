@@ -1,15 +1,15 @@
 import { Tile } from "../../components/board";
 import shuffle from "lodash.shuffle";
 
-const MIN_NUMBER = 1;
-const MAX_NUMMBER = 75;
-
-export function range(min = MIN_NUMBER, max = MAX_NUMMBER) {
+export function range(min: number, max: number) {
   return Array.from({ length: max - min + 1 }, (_, idx) => min + idx);
 }
 
-export function getNumberFromRange(numbers: number[]) {
-  return Math.round(Math.random() * (numbers.length - 1));
+export function getNumberFromRange(range: number, excluding: number[]): number {
+  const number = Math.round(Math.random() * (range - 1));
+  return excluding.includes(number)
+    ? getNumberFromRange(range, excluding)
+    : number;
 }
 
 function transpose(matrix: number[][]) {

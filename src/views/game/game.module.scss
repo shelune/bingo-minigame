@@ -1,0 +1,27 @@
+@import "../../styles/utils/index";
+
+.interactions {
+  max-width: 550px;
+  margin: 24px auto;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.button {
+  @include text-body;
+  @include rounded-4;
+  cursor: pointer;
+  background-color: $orange;
+  color: $white;
+  outline: none;
+  border: none;
+  height: 64px;
+  line-height: 64px;
+  min-width: 120px;
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: $gray;
+  }
+}
