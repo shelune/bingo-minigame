@@ -1,7 +1,7 @@
 import React from "react";
 import { screen, fireEvent, render } from "@testing-library/react";
 
-import IntroView from "./intro";
+import { IntroView } from "./intro";
 
 describe("IntroView", () => {
   it("should render", () => {

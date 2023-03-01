@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { GameView } from "./views/game";
-import IntroView from "./views/intro/intro";
+import { IntroView } from "./views/intro/intro";
 
 import "./styles/main.scss";
 

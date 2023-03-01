@@ -9,11 +9,7 @@ type Props = {
   username: string;
 };
 
-export default function IntroView({
-  setUsername,
-  setShowingGame,
-  username,
-}: Props) {
+export function IntroView({ setUsername, setShowingGame, username }: Props) {
   return (
     <div className={css.content}>
       <div className={css.dialog}>
@@ -22,7 +18,6 @@ export default function IntroView({
           className={css.form}
           onSubmit={(e) => {
             e.preventDefault();
-            // eslint-disable-next-line @typescript-eslint/no-floating-promises
             setShowingGame(true);
           }}
         >

@@ -20,5 +20,5 @@ Also available online at https://bingo-minigame.onrender.com/
 - Game gives random valid Bingo card every refresh.
 - Game stops and congratulates you (and makes your day a bit brighter) when you win.
 - Game offers a chance to restart for more bingo.
-- Game saves your game summary (only last 5) when hitting "Reset Board" if you just won. You can keep this history as long as you input the same player name on entering
+- Game gives access to your player profile (clicking on your name in the header) summary when hitting "Reset Board" if you win. You can keep this history as long as you input the same player name on entering
 - Game works on mobile too 🤞

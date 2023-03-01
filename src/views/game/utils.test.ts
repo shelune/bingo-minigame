@@ -1,4 +1,3 @@
-import Board from "../../components/board/board";
 import {
   checkColumn,
   checkDiagonal,
